@@ -24,10 +24,10 @@ Mike Jones,mike@example.com,098-765-4321,321 Fake Avenue
 
 ### Communication between layers
 
-UI calls method from ViewModel.
-ViewModel executes Repository methods.
-Each Repository returns data from a Data Source (Local for now).
-Information flows back to the UI where we display the list of posts.
+1. UI calls method from ViewModel.
+2. ViewModel executes Repository methods.
+3. Each Repository returns data from a Data Source (CsvCore).
+4. Information flows back to the UI where we display the list of posts.
 
 
 

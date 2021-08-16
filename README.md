@@ -22,5 +22,13 @@ Bob Smith,bob@example.com,123-456-7890,123 Fake Street
 Mike Jones,mike@example.com,098-765-4321,321 Fake Avenue
 ```
 
+### Communication between layers
+
+UI calls method from ViewModel.
+ViewModel executes Repository methods.
+Each Repository returns data from a Data Source (Local for now).
+Information flows back to the UI where we display the list of posts.
+
+
 
 

@@ -81,11 +81,24 @@ class ListFragment : Fragment() {
 
     private fun updateTable(csvFile: CsvFile) {
         val csvFileToArray = RowMapper().csvFileToArray(csvFile)
-        binding.tableView.columnCount = csvFileToArray[0].size - 1
-        binding.tableView.headerAdapter =
-            SimpleTableHeaderAdapter(context, *csvFileToArray[0])
+        val adapter: SimpleTableDataAdapter
+        // With header
+        if (csvFile.size() > 1) {
+            binding.tableView.columnCount = csvFileToArray[0].size - 1
+            binding.tableView.headerAdapter =
+                SimpleTableHeaderAdapter(context, *csvFileToArray[0])
 
-        val adapter = SimpleTableDataAdapter(context, csvFileToArray.subList(1, csvFileToArray.size))
+            adapter = SimpleTableDataAdapter(
+                context,
+                csvFileToArray.subList(1, csvFileToArray.size)
+            )
+        } else {
+            // Without header
+            adapter = SimpleTableDataAdapter(
+                context,
+                csvFileToArray
+            )
+        }
         binding.tableView.setDataAdapter(adapter)
     }
 

@@ -25,7 +25,7 @@ class CsvReaderTest {
     @Test
     fun `success convert simple`() {
         val inputStream: InputStream = ByteArrayInputStream(csvTestData.simple.toByteArray())
-        csvReader = CsvReader(inputStream, Charset.defaultCharset())
+        csvReader = CsvReader(inputStream)
 
         val csvFile = csvReader.parse()
         assertThat(csvFile?.rowList?.get(0)?.colList!!.sameContentWith(csvTestResultData.simple))

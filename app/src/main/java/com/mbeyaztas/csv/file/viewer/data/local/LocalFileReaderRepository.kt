@@ -9,7 +9,6 @@ import com.mbeyaztas.csv.file.viewer.commons.utils.Result
 import com.mbeyaztas.csv.file.viewer.domain.FileReaderRepository
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
-import java.nio.charset.Charset
 import javax.inject.Inject
 
 class LocalFileReaderRepository @Inject constructor(
@@ -23,7 +22,7 @@ class LocalFileReaderRepository @Inject constructor(
             try {
                 val inputStream = context.contentResolver.openInputStream(uri)
                 Result.Success(inputStream?.let {
-                    CsvReader(it, Charset.defaultCharset()).parse()
+                    CsvReader(it).parse()
                 })
             } catch (e: Exception) {
                 Result.Error(e.message ?: context.getString(R.string.error_file_read))

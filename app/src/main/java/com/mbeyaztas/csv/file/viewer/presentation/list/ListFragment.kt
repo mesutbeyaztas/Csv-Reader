@@ -85,8 +85,7 @@ class ListFragment : Fragment() {
         binding.tableView.headerAdapter =
             SimpleTableHeaderAdapter(context, *csvFileToArray[0])
 
-        csvFileToArray.removeAt(0)
-        val adapter = SimpleTableDataAdapter(context, csvFileToArray)
+        val adapter = SimpleTableDataAdapter(context, csvFileToArray.subList(1, csvFileToArray.size))
         binding.tableView.setDataAdapter(adapter)
     }
 

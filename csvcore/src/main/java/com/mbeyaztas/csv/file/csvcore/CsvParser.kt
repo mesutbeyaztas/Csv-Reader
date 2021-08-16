@@ -88,6 +88,10 @@ class CsvParser(
             }
         }
 
+        if (buffer.remaining() == 0) {
+            file.newField(false)
+        }
+
         // stay current State, and prepare for next
         buffer.clear()
     }

@@ -47,7 +47,7 @@ class ListFragment : Fragment() {
 
     private fun initViews() {
         binding.selectCsv.setOnClickListener {
-            selectCsvIntent()
+            startCsvIntent()
         }
     }
 
@@ -91,23 +91,25 @@ class ListFragment : Fragment() {
     }
 
     @SuppressLint("InlinedApi")
-    private fun selectCsvIntent() {
+    private fun startCsvIntent() {
         val intent = Intent(Intent.ACTION_OPEN_DOCUMENT).apply {
             addCategory(Intent.CATEGORY_OPENABLE)
             type = "text/comma-separated-values"
         }
 
-        registerForActivityResult(
-            ActivityResultContracts.StartActivityForResult()
-        ) { result ->
-            if (result.resultCode == Activity.RESULT_OK) {
-                val data = result.data?.data
-                if (data != null) fetchData(data)
-                else showErrorMessage(R.string.error_permission)
-            } else {
-                showErrorMessage(R.string.error_permission)
-            }
-        }.launch(intent)
+        csvResultCallback.launch(intent)
+    }
+
+    private var csvResultCallback = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            val data = result.data?.data
+            if (data != null) fetchData(data)
+            else showErrorMessage(R.string.error_permission)
+        } else {
+            showErrorMessage(R.string.error_permission)
+        }
     }
 
     private fun fetchData(uri: Uri) {

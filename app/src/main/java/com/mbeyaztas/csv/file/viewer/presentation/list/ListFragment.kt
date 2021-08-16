@@ -82,9 +82,9 @@ class ListFragment : Fragment() {
     private fun updateTable(csvFile: CsvFile) {
         val csvFileToArray = RowMapper().csvFileToArray(csvFile)
         val adapter: SimpleTableDataAdapter
+        binding.tableView.columnCount = csvFileToArray[0].size
         // With header
         if (csvFile.size() > 1) {
-            binding.tableView.columnCount = csvFileToArray[0].size - 1
             binding.tableView.headerAdapter =
                 SimpleTableHeaderAdapter(context, *csvFileToArray[0])
 

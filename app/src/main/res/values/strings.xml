@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">CSV File Viewer</string>
+    <string name="title_activity_main">Csv Reader</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="csv_viewer_fragment_label">Csv Reader</string>
+    <string name="select_csv">Select Csv</string>
+    <string name="previous">Previous</string>
+
+    <string name="error_file_read">Error!</string>
+    <string name="error_permission">Permission is denied!</string>
+    <string name="error_loading_file">Error loading the CSV file!</string>
+    <string name="please_select_a_csv_file">Please select a csv file</string>
+
+</resources>

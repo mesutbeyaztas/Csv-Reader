@@ -30,5 +30,7 @@ Mike Jones,mike@example.com,098-765-4321,321 Fake Avenue
 4. Information flows back to the UI where we display the list of posts.
 
 
+### Showing data in table view
 
+Used https://github.com/ISchwarz23/SortableTableView library to show details of csv file
 
